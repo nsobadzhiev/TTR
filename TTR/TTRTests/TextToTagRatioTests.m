@@ -281,4 +281,16 @@
 //    }
 //}
 
+- (void)testTtrRemovesAllTagsAfterExtractingText
+{
+    htmlString = @"<tag /> Text text text <b> bold text </b> <a href=\"www\"> here </a> More text";
+    NSString* extractedText = [TestableTTRArticleExtractor articleText:htmlString];
+
+    XCTAssertEqual([extractedText rangeOfString:@"<tag />"].location, NSNotFound, @"TTR should have removed the <tag /> from the string");
+    XCTAssertEqual([extractedText rangeOfString:@"<b>"].location, NSNotFound, @"TTR should have removed the <b> from the string");
+    XCTAssertEqual([extractedText rangeOfString:@"</b>"].location, NSNotFound, @"TTR should have removed the </b> from the string");
+    XCTAssertEqual([extractedText rangeOfString:@"<a href=\"www\">"].location, NSNotFound, @"TTR should have removed the <a href=\"www\"> from the string");
+    XCTAssertEqual([extractedText rangeOfString:@"</a>"].location, NSNotFound, @"TTR should have removed the </a> from the string");
+}
+
 @end
