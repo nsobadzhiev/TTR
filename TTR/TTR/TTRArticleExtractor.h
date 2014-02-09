@@ -23,6 +23,7 @@
 - (void)smoothTtrArray;
 - (NSNumber*)standardDeviation;
 - (NSArray*)contentLines;
+- (void)removeTagsFromString:(NSMutableString*)string;
 
 + (NSString*)articleText:(NSString*)html;
 

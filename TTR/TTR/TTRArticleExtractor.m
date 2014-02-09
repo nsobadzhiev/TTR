@@ -124,12 +124,21 @@
     {
         NSNumber* ttrNumber = [self.tagToTextRatioArray objectAtIndex:i];
         NSString* lineText = [htmlLines objectAtIndex:i];
-        if ([ttrNumber compare:standardDeviation] == NSOrderedDescending)
+        if ([ttrNumber compare:standardDeviation] != NSOrderedAscending)
         {
             [contentsArray addObject:lineText];
         }
     }
     return [NSArray arrayWithArray:contentsArray];
+}
+
+- (void)removeTagsFromString:(NSMutableString*)string;
+{
+    NSRegularExpression* tagsRegex = [self tagsRegex];
+    [tagsRegex replaceMatchesInString:string
+                              options:NSMatchingWithoutAnchoringBounds
+                                range:NSMakeRange(0, string.length) 
+                         withTemplate:@""];
 }
 
 + (NSString*)articleText:(NSString*)html
@@ -148,6 +157,7 @@
         [articleString appendString:line];
         [articleString appendString:@"\n"];
     }
+    [extractor removeTagsFromString:articleString];
     return [NSString stringWithString:articleString];
 }
 
