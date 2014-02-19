@@ -46,7 +46,7 @@
     htmlString = @"";
     ttrExtractor.htmlString = htmlString;
     NSArray* ttrArray = [ttrExtractor ttrArray];
-    XCTAssert((ttrArray.count == 0 && ttrArray != nil), @"TTR extactor should return an empty ttrArray if no HTML is provided");
+    XCTAssert((ttrArray.count == 1 && ttrArray != nil), @"TTR extactor should return an ttrArray with one object if no HTML is provided");
 }
 
 - (void)testTtrStripsUnwantedHtmlTags
@@ -91,6 +91,17 @@
     NSString* strippedHtml = ttrExtractor.htmlString;
     NSRange emptyLineRange = [strippedHtml rangeOfString:@"\n\n"];
     XCTAssertEqual(emptyLineRange.location, NSNotFound, @"TTR should strip empty lines");
+}
+
+- (void)testTtrRemovesEmptyWhitespaces
+{
+    htmlString = @"<tag1 type=\"text/cjs\" data-cjssrc=\"http://js.washingtonpost.com/wpost/js/combo?token=20140114143100&c=true&m=true&context=eidos&r=/search-autocomplete/global-header-autocomplete.js\">       </tag1><tag2>Hello   </tag2><tag3 type=\"text/cjs\">fefeef</tag3>";
+    ttrExtractor.htmlString = htmlString;
+    [ttrExtractor stripScriptTags];
+    NSString* strippedHtml = ttrExtractor.htmlString;
+    XCTAssertEqualObjects(strippedHtml, 
+                          @"<tag1 type=\"text/cjs\" data-cjssrc=\"http://js.washingtonpost.com/wpost/js/combo?token=20140114143100&c=true&m=true&context=eidos&r=/search-autocomplete/global-header-autocomplete.js\"></tag1><tag2>Hello</tag2><tag3 type=\"text/cjs\">fefeef</tag3>",
+                          @"TTR should strip whitespaces");
 }
 
 - (void)testTtrRemovesEmptyLinesAtBegining

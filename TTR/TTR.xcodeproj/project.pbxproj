@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2345CD4C18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
+		2345CD4D18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
+		2345CD5018AFA99800558FEE /* RegexFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4F18AFA99800558FEE /* RegexFactory.m */; };
+		2345CD5118AFA99800558FEE /* RegexFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4F18AFA99800558FEE /* RegexFactory.m */; };
+		2345CD5818AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */; };
+		2345CD5918AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */; };
+		2345CD5C18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */; };
+		2345CD5D18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */; };
 		237508A218945EB900E1EE8D /* TestableTTRArticleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 237508A118945EB900E1EE8D /* TestableTTRArticleExtractor.m */; };
 		23CA9CB5188F0B89002F83AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CA9CB4188F0B89002F83AE /* Foundation.framework */; };
 		23CA9CBA188F0B89002F83AE /* TTR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23CA9CB9188F0B89002F83AE /* TTR.h */; };
@@ -20,7 +28,6 @@
 		23CA9CDF188F136E002F83AE /* TextToTagRatioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CA9CDE188F136E002F83AE /* TextToTagRatioTests.m */; };
 		23CA9CE2188F17E6002F83AE /* TTRArticleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CA9CE1188F17E6002F83AE /* TTRArticleExtractor.m */; };
 		23CA9CE3188F17E6002F83AE /* TTRArticleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CA9CE1188F17E6002F83AE /* TTRArticleExtractor.m */; };
-		23CA9CEA18905EC1002F83AE /* test1.html in Resources */ = {isa = PBXBuildFile; fileRef = 23CA9CE7188F1D2E002F83AE /* test1.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +54,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnwantedTagStripper.h; path = TTR/UnwantedTagStripper.h; sourceTree = "<group>"; };
+		2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnwantedTagStripper.m; path = TTR/UnwantedTagStripper.m; sourceTree = "<group>"; };
+		2345CD4E18AFA99800558FEE /* RegexFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexFactory.h; path = TTR/RegexFactory.h; sourceTree = "<group>"; };
+		2345CD4F18AFA99800558FEE /* RegexFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexFactory.m; path = TTR/RegexFactory.m; sourceTree = "<group>"; };
+		2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextToTagRatioCalculator.h; path = TTR/TextToTagRatioCalculator.h; sourceTree = "<group>"; };
+		2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextToTagRatioCalculator.m; path = TTR/TextToTagRatioCalculator.m; sourceTree = "<group>"; };
+		2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextToTagRatioSmoother.h; path = TTR/TextToTagRatioSmoother.h; sourceTree = "<group>"; };
+		2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextToTagRatioSmoother.m; path = TTR/TextToTagRatioSmoother.m; sourceTree = "<group>"; };
 		237508A018945EB900E1EE8D /* TestableTTRArticleExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestableTTRArticleExtractor.h; sourceTree = "<group>"; };
 		237508A118945EB900E1EE8D /* TestableTTRArticleExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestableTTRArticleExtractor.m; sourceTree = "<group>"; };
 		23CA9CB1188F0B89002F83AE /* libTTR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTR.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +78,6 @@
 		23CA9CDE188F136E002F83AE /* TextToTagRatioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToTagRatioTests.m; sourceTree = "<group>"; };
 		23CA9CE0188F17E6002F83AE /* TTRArticleExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTRArticleExtractor.h; sourceTree = "<group>"; };
 		23CA9CE1188F17E6002F83AE /* TTRArticleExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRArticleExtractor.m; sourceTree = "<group>"; };
-		23CA9CE7188F1D2E002F83AE /* test1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test1.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +106,14 @@
 		23CA9CA8188F0B89002F83AE = {
 			isa = PBXGroup;
 			children = (
+				2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */,
+				2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */,
+				2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */,
+				2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */,
+				2345CD4E18AFA99800558FEE /* RegexFactory.h */,
+				2345CD4F18AFA99800558FEE /* RegexFactory.m */,
+				2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */,
+				2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */,
 				23CA9CB6188F0B89002F83AE /* TTR */,
 				23CA9CCA188F0B89002F83AE /* TTRTests */,
 				23CA9CB3188F0B89002F83AE /* Frameworks */,
@@ -171,7 +193,6 @@
 		23CA9CE6188F1D2E002F83AE /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
-				23CA9CE7188F1D2E002F83AE /* test1.html */,
 			);
 			path = TestResources;
 			sourceTree = "<group>";
@@ -246,7 +267,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23CA9CEA18905EC1002F83AE /* test1.html in Resources */,
 				23CA9CCF188F0B89002F83AE /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,8 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2345CD5018AFA99800558FEE /* RegexFactory.m in Sources */,
+				2345CD5C18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */,
 				23CA9CE2188F17E6002F83AE /* TTRArticleExtractor.m in Sources */,
 				23CA9CBC188F0B89002F83AE /* TTR.m in Sources */,
+				2345CD5818AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */,
+				2345CD4C18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +292,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				23CA9CD1188F0B89002F83AE /* TTRTests.m in Sources */,
+				2345CD4D18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */,
+				2345CD5118AFA99800558FEE /* RegexFactory.m in Sources */,
 				23CA9CE3188F17E6002F83AE /* TTRArticleExtractor.m in Sources */,
+				2345CD5918AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */,
 				237508A218945EB900E1EE8D /* TestableTTRArticleExtractor.m in Sources */,
 				23CA9CDF188F136E002F83AE /* TextToTagRatioTests.m in Sources */,
+				2345CD5D18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

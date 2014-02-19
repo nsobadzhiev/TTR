@@ -45,9 +45,11 @@
     }
     if (tagToTextRatioArray == nil)
     {
-        tagToTextRatioArray = [self calculateTtrArray];
+        ttrCalculator = [[TextToTagRatioCalculator alloc] initWithHtmlString:self.htmlString];
+        tagToTextRatioArray = [ttrCalculator textToTagRatioArray];
     }
     return tagToTextRatioArray;
+    
 }
 
 - (NSArray*)ttrArray
@@ -57,36 +59,8 @@
 
 - (void)stripScriptTags
 {
-    NSRegularExpression* scriptRegex = [self scriptsRegex];
-    NSRegularExpression* remarkRegex = [self remarksRegex];
-    NSRegularExpression* styleRegex = [self stylesRegex];
-    NSRegularExpression* whitespaceRegex = [self whitespaceRegex];
-    NSRegularExpression* emptyLineRegex = [self emptyLinesRegex];
-    if (![self.htmlString isMemberOfClass:[NSMutableString class]])
-    {
-        self.htmlString = [NSMutableString stringWithString:self.htmlString];
-    }
-    
-    [scriptRegex replaceMatchesInString:(NSMutableString*)self.htmlString
-                                options:NSMatchingWithoutAnchoringBounds
-                                  range:NSMakeRange(0, self.htmlString.length)
-                           withTemplate:@""];
-    [remarkRegex replaceMatchesInString:(NSMutableString*)self.htmlString
-                                options:NSMatchingWithoutAnchoringBounds
-                                  range:NSMakeRange(0, self.htmlString.length)
-                           withTemplate:@""];
-    [styleRegex replaceMatchesInString:(NSMutableString*)self.htmlString
-                               options:NSMatchingWithoutAnchoringBounds
-                                 range:NSMakeRange(0, self.htmlString.length)
-                          withTemplate:@""];
-    [whitespaceRegex replaceMatchesInString:(NSMutableString*)self.htmlString
-                                    options:NSMatchingWithoutAnchoringBounds
-                                      range:NSMakeRange(0, self.htmlString.length)
-                               withTemplate:@""];
-    [emptyLineRegex replaceMatchesInString:(NSMutableString*)self.htmlString
-                                   options:NSMatchingWithoutAnchoringBounds
-                                     range:NSMakeRange(0, self.htmlString.length)
-                              withTemplate:@""];
+    unwantedTagStripper = [[UnwantedTagStripper alloc] initWithHtmlString:self.htmlString];
+    self.htmlString = [unwantedTagStripper strippedHtmlString];
 }
 
 - (void)separateLines
@@ -96,13 +70,8 @@
 
 - (void)smoothTtrArray
 {
-    NSMutableArray* smoothArray = [NSMutableArray arrayWithCapacity:self.tagToTextRatioArray.count];
-    for (int i = 0; i < self.tagToTextRatioArray.count; i++)
-    {
-        NSNumber* smoothValue = [self smoothedValueForIndex:i];
-        [smoothArray addObject:smoothValue];
-    }
-    tagToTextRatioArray = [NSArray arrayWithArray:smoothArray];
+    ttrSmoother = [[TextToTagRatioSmoother alloc] initWithTTRArray:tagToTextRatioArray];
+    tagToTextRatioArray = [ttrSmoother smoothTtrArray];
 }
 
 - (NSNumber*)standardDeviation

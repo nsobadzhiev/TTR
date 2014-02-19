@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UnwantedTagStripper.h"
+#import "TextToTagRatioCalculator.h"
+#import "TextToTagRatioSmoother.h"
 
 @interface TTRArticleExtractor : NSObject
 {
+    UnwantedTagStripper* unwantedTagStripper;
+    TextToTagRatioCalculator* ttrCalculator;
+    TextToTagRatioSmoother* ttrSmoother;
     NSArray* htmlLines;
     NSArray* tagToTextRatioArray;
 }
