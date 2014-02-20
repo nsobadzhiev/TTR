@@ -159,7 +159,7 @@
     XCTAssert([[ttrArray objectAtIndex:0] integerValue] == 0, @"The TTR should be 0, not %@", ttr);
 }
 
-- (void)testTtrHandlesMultilineTag
+- (void)testTtrHandlesTwoLineTag
 {
     htmlString = @"<multilinetag attr=\"value\"\notherattr=\"value2\">Hello</multilinetag>";
     ttrExtractor.htmlString = htmlString;
@@ -168,6 +168,27 @@
     XCTAssert(ttrArray.count == 2, @"There should be only one line in the TTR array");
     NSNumber* ttr = (NSNumber*)[ttrArray objectAtIndex:0];
     XCTAssert([[ttrArray objectAtIndex:0] integerValue] == 0, @"The TTR should be 0, not %@", ttr);
+}
+
+- (void)testTtrHandlesThreeLineTag
+{
+    htmlString = @"<tag1 attr=3\nattr2=\"test\"\nattr=\"somevalue\"/>Pure Content</tag3>";
+    NSString* extractedText = [TestableTTRArticleExtractor articleText:htmlString];
+    XCTAssertEqualObjects(extractedText, @"Pure Content\n", @"(%@)TTR should be able to handle three line tags by ignoring all intermediate lines", extractedText);
+}
+
+- (void)testTtrHandlesMultipleLineTag
+{
+    htmlString = @"<article\n    data-entry-id=\"amXxV44\"\n    data-entry-thumbnail-url=\"http://d24w6bsrhbeh9d.cloudfront.net/photo/amXxV44_92x92.jpg\"\n    data-entry-url=\"http://9gag.com/gag/amXxV44\"\n    data-entry-votes=\"9910\"\n    data-entry-comments=\"153\"\n    id=\"jsid-entry-entity-amXxV44\"\n    class=\"badge-entry-container badge-entry-entity\">\n    <header>Content";
+    NSString* extractedText = [TestableTTRArticleExtractor articleText:htmlString];
+    XCTAssertEqualObjects(extractedText, @"\nContent\n", @"(%@)TTR should be able to handle multi-line tags by ignoring all intermediate lines", extractedText);
+}
+
+- (void)testTtrHandlesMultilineNestedTag
+{
+    htmlString = @"<h2 class=\"badge-item-title\">\n    <a class=\"badge-evt badge-track\"\n    data-evt=\"ref-post-from-list,hot,position-1\"\n    data-track=\"post,v,,,d,azbRr6z,l\"\n    href=\"/gag/azbRr6z\"\n    target=\"_blank\">\n    Haunted Graveyard            </a>\n    </h2>";
+    NSString* extractedText = [TestableTTRArticleExtractor articleText:htmlString];
+    XCTAssertEqualObjects(extractedText, @"\nHaunted Graveyard\n\n", @"(%@)TTR should be able to handle multi-line nested tags by ignoring all intermediate lines", extractedText);
 }
 
 - (void)testTtrIgnoresTagsFromPreviousLines

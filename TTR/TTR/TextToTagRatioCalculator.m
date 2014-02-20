@@ -9,6 +9,13 @@
 #import "TextToTagRatioCalculator.h"
 #import "RegexFactory.h"
 
+@interface TextToTagRatioCalculator ()
+
+- (BOOL)hasUnfinishedTag:(NSString*)line;
+- (BOOL)hasClosingBracket:(NSString*)line;
+
+@end
+
 @implementation TextToTagRatioCalculator
 
 - (id)initWithHtmlString:(NSString*)html
@@ -36,8 +43,26 @@
 - (NSArray*)calculateTtrArray
 {
     NSMutableArray* ttrArray = [NSMutableArray arrayWithCapacity:htmlStringLines.count];
+    BOOL hasCarryOver = NO;     // hasCarryOver is YES if there is an unfinished tag from a previous line
+                                // that has to be taken into account for the next one
     for (NSString* line in htmlStringLines)
     {
+        if (hasCarryOver == YES)
+        {
+            if ([self hasClosingBracket:line] == NO)
+            {
+                [ttrArray addObject:[NSNumber numberWithUnsignedInteger:0]];
+                continue;
+            }
+            else
+            {
+                hasCarryOver = NO;
+            }
+        }
+        if ([self hasUnfinishedTag:line])
+        {
+            hasCarryOver = YES;
+        }
         [ttrArray addObject:[self ttrForLine:line]];
     }
     return [NSArray arrayWithArray:ttrArray];
@@ -67,6 +92,20 @@
         matchesLength += result.range.length;
     }
     return matchesLength;
+}
+
+- (BOOL)hasUnfinishedTag:(NSString*)line
+{
+    NSArray* unfinishedTagsArray = [RegexFactory matchesForPattern:@"<((?!>).)*$"
+                                                          inString:line];
+    return (unfinishedTagsArray.count > 0);
+}
+
+- (BOOL)hasClosingBracket:(NSString*)line
+{
+    NSArray* noClosingBracketsArray = [RegexFactory matchesForPattern:@">"
+                                                             inString:line];
+    return (noClosingBracketsArray.count > 0);
 }
 
 @end
