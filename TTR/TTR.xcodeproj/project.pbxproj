@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2328CEE418C1EDC200643632 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */; };
 		2328CEE518C1EDC200643632 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */; };
+		2328CEEB18C1F9C100643632 /* TagsStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEEA18C1F9C100643632 /* TagsStripper.m */; };
+		2328CEEC18C1F9C100643632 /* TagsStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEEA18C1F9C100643632 /* TagsStripper.m */; };
 		2345CD4C18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
 		2345CD4D18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
 		2345CD5018AFA99800558FEE /* RegexFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4F18AFA99800558FEE /* RegexFactory.m */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		2328CEE218C1EDC200643632 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		2328CEE918C1F9C100643632 /* TagsStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsStripper.h; sourceTree = "<group>"; };
+		2328CEEA18C1F9C100643632 /* TagsStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsStripper.m; sourceTree = "<group>"; };
 		2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnwantedTagStripper.h; sourceTree = "<group>"; };
 		2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnwantedTagStripper.m; sourceTree = "<group>"; };
 		2345CD4E18AFA99800558FEE /* RegexFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexFactory.h; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				23CA9CB7188F0B89002F83AE /* Supporting Files */,
 				23CA9CE0188F17E6002F83AE /* TTRArticleExtractor.h */,
 				23CA9CE1188F17E6002F83AE /* TTRArticleExtractor.m */,
+				2328CEE918C1F9C100643632 /* TagsStripper.h */,
+				2328CEEA18C1F9C100643632 /* TagsStripper.m */,
 			);
 			path = TTR;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2345CD5018AFA99800558FEE /* RegexFactory.m in Sources */,
+				2328CEEB18C1F9C100643632 /* TagsStripper.m in Sources */,
 				2345CD5C18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */,
 				23CA9CE2188F17E6002F83AE /* TTRArticleExtractor.m in Sources */,
 				23CA9CBC188F0B89002F83AE /* TTR.m in Sources */,
@@ -307,6 +314,7 @@
 				237508A218945EB900E1EE8D /* TestableTTRArticleExtractor.m in Sources */,
 				23CA9CDF188F136E002F83AE /* TextToTagRatioTests.m in Sources */,
 				2345CD5D18AFC2AF00558FEE /* TextToTagRatioSmoother.m in Sources */,
+				2328CEEC18C1F9C100643632 /* TagsStripper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

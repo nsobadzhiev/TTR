@@ -11,26 +11,6 @@
 
 @interface TTRArticleExtractor ()
 
-- (NSRegularExpression*)regexWithPattern:(NSString*)pattern;
-- (NSRegularExpression*)scriptsRegex;
-- (NSRegularExpression*)remarksRegex;
-- (NSRegularExpression*)stylesRegex;
-- (NSRegularExpression*)whitespaceRegex;
-- (NSRegularExpression*)emptyLinesRegex;
-- (NSRegularExpression*)tagsRegex;
-
-- (NSArray*)resultFromRegex:(NSRegularExpression*)regex
-                   onString:(NSString*)string;
-- (void)removeMatchesInArray:(NSArray*)matches;
-
-- (NSArray*)calculateTtrArray;
-- (NSUInteger)regexMatchesLength:(NSArray*)regexMatches;
-- (NSNumber*)ttrForLine:(NSString*)line;
-
-- (NSNumber*)smoothedValueForIndex:(NSInteger)index;
-- (void)addTtrElementAtIndex:(NSInteger)index
-                     toArray:(NSMutableArray*)array;
-
 @end
 
 @implementation TTRArticleExtractor
@@ -86,6 +66,13 @@
     return [NSNumber numberWithFloat:sqrtf(squareSum / denominator)];
 }
 
+- (NSString*)removeTagsFromString:(NSMutableString*)string
+{
+    ttrTagStripper = [TagsStripper new];
+    ttrTagStripper.htmlString = string;
+    return [ttrTagStripper strippedHtmlString];
+}
+
 - (NSArray*)contentLines
 {
     NSNumber* standardDeviation = [self standardDeviation];
@@ -100,15 +87,6 @@
         }
     }
     return [NSArray arrayWithArray:contentsArray];
-}
-
-- (void)removeTagsFromString:(NSMutableString*)string;
-{
-    NSRegularExpression* tagsRegex = [self tagsRegex];
-    [tagsRegex replaceMatchesInString:string
-                              options:NSMatchingWithoutAnchoringBounds
-                                range:NSMakeRange(0, string.length) 
-                         withTemplate:@""];
 }
 
 + (NSString*)articleText:(NSString*)html
@@ -127,138 +105,8 @@
         [articleString appendString:line];
         [articleString appendString:@"\n"];
     }
-    [extractor removeTagsFromString:articleString];
-    return [articleString gtm_stringByUnescapingFromHTML];
-}
-
-#pragma mark -- PrivateMethods
-
-- (NSRegularExpression*)regexWithPattern:(NSString*)pattern
-{
-    NSError* regexError = nil;
-    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionDotMatchesLineSeparators
-                                                                             error:&regexError];
-    if (regexError)
-    {
-        NSLog(@"Regex creation failed with error: %@", [regexError description]);
-        return nil;
-    }
-    return regex;
-}
-
-- (NSRegularExpression*)scriptsRegex
-{
-    return [self regexWithPattern:@"<script((?!</script>).)*</script>"];
-}
-
-- (NSRegularExpression*)remarksRegex
-{
-    return [self regexWithPattern:@"<remark((?!</remark>).)*</remark>"];
-}
-
-- (NSRegularExpression*)stylesRegex
-{
-    return [self regexWithPattern:@"<style((?!</style>).)*</style>"];
-}
-
-- (NSRegularExpression*)whitespaceRegex
-{
-    return [self regexWithPattern:@"[\040\t]{2,}"];
-}
-
-- (NSRegularExpression*)emptyLinesRegex
-{
-    return [self regexWithPattern:@"^(\n)+|\n\n|(\n)+$"];
-}
-
-- (NSRegularExpression*)tagsRegex
-{
-    return [self regexWithPattern:@"(^((?!(<|>)).)*>|<((?!<).)*?(>|$))"];
-}
-
-- (NSArray*)resultFromRegex:(NSRegularExpression*)regex
-                   onString:(NSString*)string
-{
-    NSArray* matches = [regex matchesInString:string
-                                      options:NSMatchingWithoutAnchoringBounds
-                                        range:NSMakeRange(0, string.length)];
-    return matches;
-}
-
-- (void)removeMatchesInArray:(NSArray*)matches
-{
-    if (![self.htmlString isMemberOfClass:[NSMutableString class]])
-    {
-        self.htmlString = [NSMutableString stringWithString:self.htmlString];
-    }
-    NSUInteger numRemovedCharacters = 0;
-    for (NSTextCheckingResult* match in matches)
-    {
-        NSRange deletionRange = match.range;
-        deletionRange.location -= numRemovedCharacters;
-        numRemovedCharacters += deletionRange.length;
-        [(NSMutableString*)self.htmlString deleteCharactersInRange:deletionRange];
-    }
-}
-
-- (NSArray*)calculateTtrArray
-{
-    NSMutableArray* ttrArray = [NSMutableArray arrayWithCapacity:htmlLines.count];
-    for (NSString* line in htmlLines)
-    {
-        [ttrArray addObject:[self ttrForLine:line]];
-    }
-    return [NSArray arrayWithArray:ttrArray];
-}
-
-- (NSUInteger)regexMatchesLength:(NSArray*)regexMatches
-{
-    NSUInteger matchesLength = 0;
-    for (NSTextCheckingResult* result in regexMatches)
-    {
-        matchesLength += result.range.length;
-    }
-    return matchesLength;
-}
-
-- (NSNumber*)ttrForLine:(NSString*)line
-{
-    NSArray* tagsArray = [self resultFromRegex:[self tagsRegex]
-                                      onString:line];
-    NSUInteger nonTagCharCount = line.length - [self regexMatchesLength:tagsArray];
-    NSUInteger tagsCount = tagsArray.count;
-    if (tagsCount != 0)
-    {
-        return [NSNumber numberWithFloat:(float)nonTagCharCount / (float)tagsCount];
-    }
-    else
-    {
-        return [NSNumber numberWithLong:nonTagCharCount];
-    }
-}
-
-- (NSNumber*)smoothedValueForIndex:(NSInteger)index
-{
-    float sum = 0.0f;
-    for (long i = index - 2; i <= index + 2; i++)
-    {
-        if (i >= 0 && i < self.tagToTextRatioArray.count)
-        {
-            sum += [(NSNumber*)[self.tagToTextRatioArray objectAtIndex:i] floatValue];
-        }
-    }
-    float denominator = 2 * 2 + 1;
-    return [NSNumber numberWithFloat:sum/denominator];
-}
-
-- (void)addTtrElementAtIndex:(NSInteger)index
-                     toArray:(NSMutableArray*)array
-{
-    if (index >= 0 && index < self.tagToTextRatioArray.count)
-    {
-        [array addObject:[self.tagToTextRatioArray objectAtIndex:index]];
-    }
+    NSString* strippedArticle = [extractor removeTagsFromString:articleString];
+    return [strippedArticle gtm_stringByUnescapingFromHTML];
 }
 
 @end

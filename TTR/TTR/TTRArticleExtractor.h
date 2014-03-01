@@ -10,12 +10,14 @@
 #import "UnwantedTagStripper.h"
 #import "TextToTagRatioCalculator.h"
 #import "TextToTagRatioSmoother.h"
+#import "TagsStripper.h"
 
 @interface TTRArticleExtractor : NSObject
 {
     UnwantedTagStripper* unwantedTagStripper;
     TextToTagRatioCalculator* ttrCalculator;
     TextToTagRatioSmoother* ttrSmoother;
+    TagsStripper* ttrTagStripper;
     NSArray* htmlLines;
     NSArray* tagToTextRatioArray;
 }
@@ -29,7 +31,7 @@
 - (void)smoothTtrArray;
 - (NSNumber*)standardDeviation;
 - (NSArray*)contentLines;
-- (void)removeTagsFromString:(NSMutableString*)string;
+- (NSString*)removeTagsFromString:(NSMutableString*)string;
 
 + (NSString*)articleText:(NSString*)html;
 
