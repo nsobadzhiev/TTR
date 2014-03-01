@@ -7,6 +7,7 @@
 //
 
 #import "TTRArticleExtractor.h"
+#import "GTMNSString+HTML.h"
 
 @interface TTRArticleExtractor ()
 
@@ -127,7 +128,7 @@
         [articleString appendString:@"\n"];
     }
     [extractor removeTagsFromString:articleString];
-    return [NSString stringWithString:articleString];
+    return [articleString gtm_stringByUnescapingFromHTML];
 }
 
 #pragma mark -- PrivateMethods

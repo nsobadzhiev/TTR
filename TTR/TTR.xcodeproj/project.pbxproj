@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2328CEE418C1EDC200643632 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */; };
+		2328CEE518C1EDC200643632 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */; };
 		2345CD4C18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
 		2345CD4D18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */; };
 		2345CD5018AFA99800558FEE /* RegexFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2345CD4F18AFA99800558FEE /* RegexFactory.m */; };
@@ -54,14 +56,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnwantedTagStripper.h; path = TTR/UnwantedTagStripper.h; sourceTree = "<group>"; };
-		2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnwantedTagStripper.m; path = TTR/UnwantedTagStripper.m; sourceTree = "<group>"; };
-		2345CD4E18AFA99800558FEE /* RegexFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexFactory.h; path = TTR/RegexFactory.h; sourceTree = "<group>"; };
-		2345CD4F18AFA99800558FEE /* RegexFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexFactory.m; path = TTR/RegexFactory.m; sourceTree = "<group>"; };
-		2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextToTagRatioCalculator.h; path = TTR/TextToTagRatioCalculator.h; sourceTree = "<group>"; };
-		2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextToTagRatioCalculator.m; path = TTR/TextToTagRatioCalculator.m; sourceTree = "<group>"; };
-		2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextToTagRatioSmoother.h; path = TTR/TextToTagRatioSmoother.h; sourceTree = "<group>"; };
-		2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextToTagRatioSmoother.m; path = TTR/TextToTagRatioSmoother.m; sourceTree = "<group>"; };
+		2328CEE218C1EDC200643632 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnwantedTagStripper.h; sourceTree = "<group>"; };
+		2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnwantedTagStripper.m; sourceTree = "<group>"; };
+		2345CD4E18AFA99800558FEE /* RegexFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexFactory.h; sourceTree = "<group>"; };
+		2345CD4F18AFA99800558FEE /* RegexFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexFactory.m; sourceTree = "<group>"; };
+		2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToTagRatioCalculator.h; sourceTree = "<group>"; };
+		2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToTagRatioCalculator.m; sourceTree = "<group>"; };
+		2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToTagRatioSmoother.h; sourceTree = "<group>"; };
+		2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToTagRatioSmoother.m; sourceTree = "<group>"; };
 		237508A018945EB900E1EE8D /* TestableTTRArticleExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestableTTRArticleExtractor.h; sourceTree = "<group>"; };
 		237508A118945EB900E1EE8D /* TestableTTRArticleExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestableTTRArticleExtractor.m; sourceTree = "<group>"; };
 		23CA9CB1188F0B89002F83AE /* libTTR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTR.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,14 +110,6 @@
 		23CA9CA8188F0B89002F83AE = {
 			isa = PBXGroup;
 			children = (
-				2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */,
-				2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */,
-				2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */,
-				2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */,
-				2345CD4E18AFA99800558FEE /* RegexFactory.h */,
-				2345CD4F18AFA99800558FEE /* RegexFactory.m */,
-				2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */,
-				2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */,
 				23CA9CB6188F0B89002F83AE /* TTR */,
 				23CA9CCA188F0B89002F83AE /* TTRTests */,
 				23CA9CB3188F0B89002F83AE /* Frameworks */,
@@ -143,6 +139,16 @@
 		23CA9CB6188F0B89002F83AE /* TTR */ = {
 			isa = PBXGroup;
 			children = (
+				2328CEE218C1EDC200643632 /* GTMNSString+HTML.h */,
+				2328CEE318C1EDC200643632 /* GTMNSString+HTML.m */,
+				2345CD5A18AFC2AF00558FEE /* TextToTagRatioSmoother.h */,
+				2345CD5B18AFC2AF00558FEE /* TextToTagRatioSmoother.m */,
+				2345CD5618AFBA2600558FEE /* TextToTagRatioCalculator.h */,
+				2345CD5718AFBA2600558FEE /* TextToTagRatioCalculator.m */,
+				2345CD4E18AFA99800558FEE /* RegexFactory.h */,
+				2345CD4F18AFA99800558FEE /* RegexFactory.m */,
+				2345CD4A18AFA74A00558FEE /* UnwantedTagStripper.h */,
+				2345CD4B18AFA74A00558FEE /* UnwantedTagStripper.m */,
 				23CA9CB9188F0B89002F83AE /* TTR.h */,
 				23CA9CBB188F0B89002F83AE /* TTR.m */,
 				23CA9CB7188F0B89002F83AE /* Supporting Files */,
@@ -284,6 +290,7 @@
 				23CA9CBC188F0B89002F83AE /* TTR.m in Sources */,
 				2345CD5818AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */,
 				2345CD4C18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */,
+				2328CEE418C1EDC200643632 /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 			files = (
 				23CA9CD1188F0B89002F83AE /* TTRTests.m in Sources */,
 				2345CD4D18AFA74A00558FEE /* UnwantedTagStripper.m in Sources */,
+				2328CEE518C1EDC200643632 /* GTMNSString+HTML.m in Sources */,
 				2345CD5118AFA99800558FEE /* RegexFactory.m in Sources */,
 				23CA9CE3188F17E6002F83AE /* TTRArticleExtractor.m in Sources */,
 				2345CD5918AFBA2600558FEE /* TextToTagRatioCalculator.m in Sources */,

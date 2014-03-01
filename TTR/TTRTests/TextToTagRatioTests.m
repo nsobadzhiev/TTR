@@ -313,6 +313,14 @@
 //    }
 //}
 
+- (void)testTtrUnescapesEncodedHtmlCharacters
+{
+    htmlString = @"&amp;&#39;&euro;&#37;&#55;&lt;&nbsp;&#167;&#233;";
+    NSString* extractedText = [TestableTTRArticleExtractor articleText:htmlString];
+    NSString* expectedString = @"&'€%7< §é\n";
+    XCTAssertTrue([extractedText localizedCompare:expectedString] == NSOrderedSame, @"TTR should unescape HTML encoded characters once extraction is complete");
+}
+
 - (void)testTtrRemovesAllTagsAfterExtractingText
 {
     htmlString = @"<tag /> Text text text <b> bold text </b> <a href=\"www\"> here </a> More text";
